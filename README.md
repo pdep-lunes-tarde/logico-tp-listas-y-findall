@@ -1,17 +1,13 @@
 # TP-4: Functores y polimorfismo
 
+
 ## Tareas
 
 - [ ] Aceptar el assignment y clonar el repositorio con el ejercicio
-- [ ] Reemplazar la lista de integrantes con los nombres de los integrantes del equipo en el archivo README.md
+- [ ] Reemplazar nombre y legajo en el archivo README.md
 
-## Integrantes
-
-**Equipo:**  Team Rocket
-
-- Ayelen Garcia (@ayelenMacarena)
-- Federico Romero (@fecheromero)
-- Juan Fernandes (@juanFdS)
+- **Nombre:**
+- **Legajo:**
 
 ## Pre-requisitos
 
