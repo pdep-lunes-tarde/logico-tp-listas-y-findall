@@ -1,21 +1,12 @@
 # TP-4: Functores y polimorfismo
 
-
-## Tareas
-
-- [ ] Aceptar el assignment y clonar el repositorio con el ejercicio
-- [ ] Reemplazar nombre y legajo en el archivo README.md
-
-- **Nombre:**
-- **Legajo:**
-
 ## Pre-requisitos
 
 Tener instalado [prolog](https://github.com/pdep-utn/enunciados-miercoles-noche/blob/master/pages/prolog/entorno.md).
 
 ## El enunciado: Profesiones mágicas
 
-Queremos saber que aptitudes tienen diferentes magos para diferentes profesiones, y en base a eso saber a cuales podran dedicarse.
+Queremos saber qué aptitudes tienen diferentes magos para diferentes profesiones, y en base a eso saber a cuales podrán dedicarse.
 
 ### Magos
 
@@ -29,13 +20,13 @@ Partimos de conocer los siguientes magos y sus fechas de nacimiento:
 -  Ginny Weasley nació el 11/8/1981
 -  Minerva McGonagall nació el 4/10/1935
 
-Además, sabemos que Harry, Tom, Sirus, Ginny y Peter son de [sangre pura](https://harrypotter.fandom.com/es/wiki/Sangre_pura).
+Además, sabemos que Harry, Tom, Sirius, Ginny y Peter son de [sangre pura](https://harrypotter.fandom.com/es/wiki/Sangre_pura).
 
 ------------
 
 ### Aptitudes
 
-Las aptitudes son características y logros que tienen diferentes magos y que cada profesión luego va a asignar alguna calificacion, las aptitudes que conocemos por ahora son 3:
+Las aptitudes son características y logros que tienen diferentes magos, a las que cada profesión luego va a asignar alguna calificación. Las aptitudes que conocemos por ahora son 3:
 - Notas que sacaron en materias
 - Rendimiento jugando al quidditch
 - Si son animagos o no
@@ -72,8 +63,8 @@ De los únicos que conocemos sus puntajes en quidditch son:
 
 Teniendo en cuenta que los predicados principales tienen que ser inversibles y tener tests, lo que queremos poder consultar es:
 
-**1)** La calificación de una aptitud para una profesion en particular, sabiendo que la misma aptitud puede tener una calificación diferente para diferentes profesiones: 
-- para ser mortifago (que no es una profesión muy honrada):
+**1)** La calificación, puntaje que cierta profesión asigna a cierto mago para cierta disciplina:
+- para ser mortífago (que no es una profesión muy honrada):
   - haber cursado encantamientos tiene una calificación igual a la nota * 2.
   - haber cursado defensa contra las artes oscuras tiene una calificación de 20 + la nota si la nota es 10 o más, y de solo la nota en caso contrario.
 
@@ -82,12 +73,14 @@ Teniendo en cuenta que los predicados principales tienen que ser inversibles y t
   - haber jugado al quidditch tiene una calificación igual a los partidos ganados / los partidos perdidos * 60.
   - ser un animago tiene una calificación igual a 40.
 
-- el resto de las profesiones no tienen calificaicones para las aptitudes.
+- el resto de las profesiones no tiene calificaciones para las aptitudes.
+
+_Ejemplo: Harry tiene una calificación de 70 para Defensa Contra las Artes Oscuras, para ser auror. A su vez, tiene una calificación de 180 para Quidditch, para ser auror._
 
 **2)** Queremos saber si un mago es apto para una profesión, sabiendo que:
 - **Todas** las profesiones requieren haberse sacado mas de un 5 en historia magica. 
  
-- Para ser apto para ser **mortifago** el mago tiene que tener alguna aptitud que le de una calificación mayor a 30 para esta profesión, ser sangre pura y haber nacido antes de 1960.
+- Para ser apto para ser **mortífago** el mago tiene que tener alguna aptitud que le dé una calificación mayor o igual a 30 para esta profesión, ser sangre pura y haber nacido antes de 1960.
 
 - Para ser apto para ser **auror** todas las aptitudes de auror del mago tienen que darle una clasificación mayor a 15.
 
@@ -95,7 +88,7 @@ Teniendo en cuenta que los predicados principales tienen que ser inversibles y t
 
 - Para ser apto para ser **adivinador** el mago tiene que tener una fecha de nacimiento donde la suma de su década + su mes + su día sea igual a 100.
 
-  _Nota: mod/2 les puede servir para relacionar un año con su década._
+_Nota: mod/2 les puede servir para relacionar un año con su década._
 
 **3)** Si un mago está complicado, que sucede cuando no es apto para ninguna profesión.
 
