@@ -4,99 +4,55 @@
 
 Tener instalado [prolog](https://github.com/pdep-utn/enunciados-miercoles-noche/blob/master/pages/prolog/entorno.md).
 
-## El enunciado: Profesiones mágicas
+## El enunciado: Elecciones
+Se avecina una reñida elección entre el Partido Conversador y el Partido Vertical; las autoridades electorales nos contrataron para programar un sistema que procese la información que tenemos de los partidos y sus afiliados.
 
-Queremos saber qué aptitudes tienen diferentes magos para diferentes profesiones, y en base a eso saber a cuales podrán dedicarse.
+### Base de conocimientos
+Conocemos los nombres y provincias de residencia de los afiliados a partidos políticos:
+<u>Partido Conversador</u>
+- Dante: vive en Mendoza.
+- Juan: vive en CABA.
+- Tomi: vive en Córdoba.
+- Juani: vive en Córdoba.
+<u>Partido Vertical:</u>
+- Emi: vive en La Rioja.
+- Manu: vive en Córdoba.
+- Aye: vive en La Rioja.
+- Feche: vive en La Rioja.
 
-### Magos
+En la próxima elección, se votarán candidatos para los cargos de presidente y diputados. Las candidaturas presentadas ante las autoridades son las siguientes:
+- Presidente: Juan, Emi.
+- Diputado por La Rioja: Dante, Aye.
+- Diputado por Córdoba: Tomi, Juani, Manu.
+- Diputado por CABA: Feche.
 
-Partimos de conocer los siguientes magos y sus fechas de nacimiento:
+Con esta información, queremos desarrollar predicados inversibles que nos permitan consultar la siguiente información:
 
--  Harry Potter nació el 31/7/1980
--  Hermione Granger nació el 19/9/1979
--  Tom Riddle nació el 31/12/1926
--  Sirius Black nació el 3/11/1959
--  Peter Pettigrew nació el 1/9/1959
--  Ginny Weasley nació el 11/8/1981
--  Minerva McGonagall nació el 4/10/1935
+1. Rivales
+Dos personas son rivales si se postulan para el mismo cargo (en el caso de las candidaturas a diputados, esto incluye las provincias por las que se postulan).
+_Por ejemplo, Dante y Aye son rivales; Tomi y Juani también._
 
-Además, sabemos que Harry, Tom, Sirius, Ginny y Peter son de [sangre pura](https://harrypotter.fandom.com/es/wiki/Sangre_pura).
+2. Listas en provincias
+Queremos saber, dada una provincia y un candidato, si el candidato aparecerá en las listas de esta provincia. Los candidatos a presidente se presentan a nivel nacional, por lo tanto aparecerán en las listas de todas las provincias.
+_Por ejemplo, en las listas de Córdoba aparecerán Juan, Tomi, Juani, Emi y Manu._
 
-------------
+3. Elecciones sin competencia
+Se considera que no hay competencia para cierto cargo si solamente hay una candidatura para el mismo.
+_Por ejemplo, no hay competencia para el cargo de diputado por CABA._
 
-### Aptitudes
+4. Internas
+Se considera que cierto partido tiene una interna para cierto cargo si hay varias candidaturas para el mismo cargo correspondientes al mismo partido.
+_Por ejemplo, el P. Conversador tiene una interna para el cargo de diputado por Córdoba._
 
-Las aptitudes son características y logros que tienen diferentes magos, a las que cada profesión luego va a asignar alguna calificación. Las aptitudes que conocemos por ahora son 3:
-- Notas que sacaron en materias
-- Rendimiento jugando al quidditch
-- Si son animagos o no
+5. Mudanzas
+Se considera que un candidato se tendría que mudar a cierto distrito si vive en un distrito distinto de aquel en el que tendría que residir de ser electo. El presidente debe residir en CABA, y los diputados, en las provincias por las cuales fueron electos.
+_Por ejemplo, Dante tendría que mudarse a La Rioja, dado que vive en Mendoza pero es candidato a diputado por La Rioja. A su vez, Emi tendría que mudarse a CABA dado que es candidato a presidente y vive en La Rioja. En cambio, Juan no debe mudarse (candidato a presidente, ya vive en CABA), y tampoco debe hacerlo Aye (candidata a diputada por La Rioja, ya vive allí)._
 
-Sabemos que en las siguientes materias sacaron estas notas (si el nombre de alguien no aparece es porque no la cursó):
-
-#### Notas
-
-| Mago | Encantamiento | Historia Mágica | Defensa contra las artes oscuras |
-| ---- | ----                             | ----          | -----           |
-| Harry |  6 | 7 | 10 | 
-| Tom  |  9 | 9 | 10 |
-| Hermione  |  10 | 10 | 9 |
-| Sirius  |  5 | 3 | 8 |
-| Minerva  |  8 | 9 | 10 |
-| Ginny  |  7 | 7 | 8 |
-| Peter  |  4 | 6 | 2 |
-
-#### Animagos
-
-Sabemos que tanto Sirius como Peter son **animagos**.
-
-#### Quidditch
-
-De los únicos que conocemos sus puntajes en quidditch son:
-
-| Mago | Partidos totales | Partidos ganados |
-| ---- | ----        | ----- |
-| Harry |  15 | 10 | 
-| Ginny  |  20 | 15 |
-| Peter  |  10 | 3 |
-
-### Requerimientos
-
-Teniendo en cuenta que los predicados principales tienen que ser inversibles y tener tests, lo que queremos poder consultar es:
-
-**1)** La calificación, puntaje que cierta profesión asigna a cierto mago para cierta disciplina:
-- para ser mortífago (que no es una profesión muy honrada):
-  - haber cursado encantamientos tiene una calificación igual a la nota * 2.
-  - haber cursado defensa contra las artes oscuras tiene una calificación de 20 + la nota si la nota es 10 o más, y de solo la nota en caso contrario.
-
-- para ser auror:
-  - haber cursado defensa contra las artes oscura tiene una calificación igual  a la nota * 7.
-  - haber jugado al quidditch tiene una calificación igual a los partidos ganados / los partidos perdidos * 60.
-  - ser un animago tiene una calificación igual a 40.
-
-- el resto de las profesiones no tiene calificaciones para las aptitudes.
-
-_Ejemplo: Harry tiene una calificación de 70 para Defensa Contra las Artes Oscuras, para ser auror. A su vez, tiene una calificación de 180 para Quidditch, para ser auror._
-
-**2)** Queremos saber si un mago es apto para una profesión, sabiendo que:
-- **Todas** las profesiones requieren haberse sacado mas de un 5 en historia magica. 
- 
-- Para ser apto para ser **mortífago** el mago tiene que tener alguna aptitud que le dé una calificación mayor o igual a 30 para esta profesión, ser sangre pura y haber nacido antes de 1960.
-
-- Para ser apto para ser **auror** todas las aptitudes de auror del mago tienen que darle una clasificación mayor a 15.
-
-- Para ser apto para ser **jugador** de quidditch tiene que haber ganado al menos la mitad de sus partidos
-
-- Para ser apto para ser **adivinador** el mago tiene que tener una fecha de nacimiento donde la suma de su década + su mes + su día sea igual a 100.
-
-_Nota: mod/2 les puede servir para relacionar un año con su década._
-
-**3)** Si un mago está complicado, que sucede cuando no es apto para ninguna profesión.
-
-**4)** Para que profesión se tiene un talento nato, que es aquella para la cual un mago tiene su calificación más alta (no hay que sumar, es la más alta entre todas sus aptitudes).
-
-**5)** Si tiene un destino marcado, que se cumple si solamente tiene una sola profesion que para la que es apto.
-
---------------------------
-
-Cuando terminen, creen un issue etiquetando a sus tutores así les llega una notificación y se corrigen y les dejan feedback ahí.
-![](https://i.imgur.com/ypeXpBw.gif)
+6. Permisos para acceder
+Sabemos que los partidos poseen sedes. Existen dos tipos de sedes: comités y oficinas; estas últimas están a cargo de una persona:
+- El Partido Conversador posee un comité llamado “Honor conversador”,
+- El Partido Vertical posee un comité llamado “Legado vertical”,
+- El Partido Vertical posee una oficina a cargo de Emi llamada “La Emicueva”.
+- El Partido Conversador posee una oficina a cargo de Aye llamada “La inaccesible”.
+Un candidato puede acceder a un comité si está afiliado al partido al cual pertenece. Si es una oficina, además tiene que ser el dueño de la misma.
+_Por ejemplo, Dante puede acceder a “Honor conversador” y Emi a “La Emicueva”. Curiosamente, como “La inaccesible” está registrada como del Partido Conversador, pero está a nombre de Aye (afiliada al Partido Vertical), nadie puede acceder._
