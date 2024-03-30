@@ -56,7 +56,7 @@ Se considera que un candidato se tendría que mudar a cierto distrito si vive en
 _Por ejemplo, Dante tendría que mudarse a La Rioja, dado que vive en Mendoza pero es candidato a diputado por La Rioja. A su vez, Emi tendría que mudarse a CABA dado que es candidato a presidente y vive en La Rioja. En cambio, Juan no debe mudarse (candidato a presidente, ya vive en CABA), y tampoco debe hacerlo Aye (candidata a diputada por La Rioja, ya vive allí)._
 
 ### 6. Permisos para acceder
-Sabemos que los partidos poseen sedes. Existen dos tipos de sedes: comités y oficinas; estas últimas están a cargo de una persona:
+Sabemos que los partidos poseen sedes. Existen dos tipos de sedes: comités y oficinas; estas últimas están a cargo de una persona.
 - El Partido Conversador posee un comité llamado “Honor conversador”,
 - El Partido Vertical posee un comité llamado “Legado vertical”,
 - El Partido Vertical posee una oficina a cargo de Emi llamada “La Emicueva”.
