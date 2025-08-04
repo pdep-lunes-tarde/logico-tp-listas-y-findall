@@ -1,4 +1,4 @@
 
-:- begin_tests(tp4).
+:- begin_tests(tp5).
 
-:- end_tests(tp4).
+:- end_tests(tp5).
