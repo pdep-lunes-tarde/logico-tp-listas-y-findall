@@ -8,10 +8,12 @@ Tener instalado [prolog](https://github.com/pdep-utn/enunciados-miercoles-noche/
 
 En una competencia de saltos, cada competidor puede hacer hasta 5 saltos; a cada salto se le asigna un puntaje de 0 a 10. Se define el predicado puntajes que relaciona cada competidor con los puntajes de sus saltos, p.ej.
 
+```prolog
 puntajes(hernan, [3,5,8,6,9]).
 puntajes(julio, [9,7,3,9,10,2]).
 puntajes(ruben, [3,5,3,8,3]).
 puntajes(roque, [7,10,10]).
+```
 
 Se pide armar un programa Prolog que a partir de esta información permita consultar:
 
