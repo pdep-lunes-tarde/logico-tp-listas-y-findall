@@ -1,4 +1,4 @@
-# TP-5: Listas y findall
+# Listas y findall
 
 ## Pre-requisitos
 
